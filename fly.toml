@@ -1,8 +1,3 @@
-# fly.toml app configuration file generated for fly-keycloak-broken-bird-3701 on 2024-11-27T09:47:50+01:00
-#
-# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
-#
-
 app = 'fly-keycloak-broken-bird-3701'
 primary_region = 'fra'
 kill_signal = 'SIGINT'
@@ -12,8 +7,10 @@ kill_timeout = '5s'
   cmd = ['start', '--cache=ispn', '--cache-config-file=flyio-cache-config.xml']
 
 [build]
+  JAVA_OPTS_KC_HEAP = '-XX:MaxHeapFreeRatio=30 -XX:MaxRAMPercentage=65'
 
 [env]
+  JAVA_OPTS_KC_HEAP = '-XX:MaxHeapFreeRatio=30 -XX:MaxRAMPercentage=65'
   JAVA_OPTS = "-Djboss.bind.address.private=0.0.0.0 -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv6Addresses=true"
   KC_DB = 'postgres'
   KC_HOSTNAME_STRICT = 'false'
@@ -48,6 +45,19 @@ kill_timeout = '5s'
     interval = '15s'
     timeout = '2s'
     grace_period = '1s'
+
+  [[services.http_checks]]
+    interval = '30s'
+    timeout = '2s'
+    grace_period = '5s'
+    method = 'get'
+    path = '/health'
+    protocol = 'http'
+    tls_skip_verify = false
+
+[[metrics]]
+  port = 8080
+  path = '/metrics'
 
 [[vm]]
   size = 'shared-cpu-2x'
