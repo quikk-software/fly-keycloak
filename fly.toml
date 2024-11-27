@@ -50,6 +50,5 @@ kill_timeout = '5s'
     grace_period = '1s'
 
 [[vm]]
+  size = 'shared-cpu-2x'
   memory = '1gb'
-  cpu_kind = 'shared'
-  cpus = 1
