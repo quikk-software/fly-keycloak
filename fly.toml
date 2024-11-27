@@ -23,7 +23,7 @@ kill_timeout = '5s'
   force_https = true
   auto_stop_machines = 'stop'
   auto_start_machines = true
-  min_machines_running = 0
+  min_machines_running = 1
   processes = ['app']
 
 [[services]]
@@ -58,5 +58,5 @@ kill_timeout = '5s'
   path = '/metrics'
 
 [[vm]]
-  size = 'performance-1x'
-  memory = '2gb'
+  size = 'shared-cpu-2x'
+  memory = '1gb'
