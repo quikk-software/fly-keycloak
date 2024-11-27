@@ -58,5 +58,5 @@ kill_timeout = '5s'
   path = '/metrics'
 
 [[vm]]
-  size = 'shared-cpu-2x'
-  memory = '1gb'
+  size = 'performance-1x'
+  memory = '2gb'
