@@ -7,10 +7,8 @@ kill_timeout = '5s'
   cmd = ['start', '--cache=ispn', '--cache-config-file=flyio-cache-config.xml']
 
 [build]
-  JAVA_OPTS_KC_HEAP = '-XX:MaxHeapFreeRatio=30 -XX:MaxRAMPercentage=65'
 
 [env]
-  JAVA_OPTS_KC_HEAP = '-XX:MaxHeapFreeRatio=30 -XX:MaxRAMPercentage=65'
   JAVA_OPTS = "-Djboss.bind.address.private=0.0.0.0 -Djboss.bind.address=0.0.0.0 -Djava.net.preferIPv6Addresses=true"
   KC_DB = 'postgres'
   KC_HOSTNAME_STRICT = 'false'
